@@ -1,0 +1,6 @@
+{
+  "name": "Little Moments – Gift Baskets",
+  "description": "Multilingual gift basket inquiry form and private owner submission portal for Little Moments.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

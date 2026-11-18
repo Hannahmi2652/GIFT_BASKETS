@@ -1,0 +1,48 @@
+{
+  "entities": {
+    "Submission": {
+      "title": "Submission",
+      "description": "A customer inquiry submitted through the Little Moments Gift Baskets form.",
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "The customer's full name.",
+          "minLength": 2,
+          "maxLength": 120
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The customer's phone number.",
+          "minLength": 5,
+          "maxLength": 32,
+          "pattern": "^[+0-9()\\-\\s.]{5,32}$"
+        },
+        "language": {
+          "type": "string",
+          "description": "The language selected by the customer when submitting.",
+          "enum": ["en", "fr", "he"]
+        },
+        "status": {
+          "type": "string",
+          "description": "Follow-up status managed by the business owner.",
+          "enum": ["new", "contacted"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of when the inquiry was submitted."
+        }
+      },
+      "required": ["fullName", "phoneNumber", "language", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/submissions/{submissionId}": {
+      "schema": {
+        "$ref": "#/entities/Submission"
+      },
+      "description": "Customer inquiry submissions. Publicly creatable with strict schema validation; readable, updatable, and deletable only by the verified business owner."
+    }
+  }
+}
